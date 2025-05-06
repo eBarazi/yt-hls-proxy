@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  yt-stream-proxy:
+    build: .
+    container_name: yt-proxy
+    environment:
+      YOUTUBE_URL_live1: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID1"
+      YOUTUBE_URL_live2: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID2"
+      CRON_INTERVAL: "0 */6 * * *"
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./data:/output
+    restart: unless-stopped
